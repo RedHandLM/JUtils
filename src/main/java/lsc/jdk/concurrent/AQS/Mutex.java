@@ -17,6 +17,8 @@ import java.util.concurrent.locks.Lock;
 class Mutex implements Lock, java.io.Serializable {
 
     /**
+     * 
+     * 
      */
     private static final long serialVersionUID = 1L;
 
