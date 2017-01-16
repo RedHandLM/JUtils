@@ -1,4 +1,4 @@
-package lsc.jdk.concurrent.SynUtil;
+package lsc.jdk.concurrent.syn_util;
 
 import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
 import java.util.concurrent.locks.Condition;

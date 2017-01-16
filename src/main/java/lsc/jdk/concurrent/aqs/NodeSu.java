@@ -1,4 +1,4 @@
-package lsc.jdk.concurrent.AQS;
+package lsc.jdk.concurrent.aqs;
 
 /**
  * 
