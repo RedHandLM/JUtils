@@ -15,6 +15,10 @@ import lsc.disruptor.performanceCompare.bean.LogEvent;
  * @since [产品/模块版本] （可选）
  */
 public class LinkedBlockingQueueTest {
+    
+    
+    
+    
     public static int eventNum = 5000000;
 
     public static void main(String[] args) {
