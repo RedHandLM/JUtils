@@ -8,7 +8,7 @@ public class ContentLogEventHandler implements EventHandler<ResumeEvent> {
 
     public void onEvent(ResumeEvent event, long sequence, boolean endOfBatch) throws Exception {
         
-        
+       
 
     }
 

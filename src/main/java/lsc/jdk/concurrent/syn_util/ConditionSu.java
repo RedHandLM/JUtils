@@ -1,8 +1,6 @@
 package lsc.jdk.concurrent.syn_util;
 
-import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
 import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
