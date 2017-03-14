@@ -9,7 +9,5 @@ public class StartServer {
 		System.out.println("Port:53606");
 		NettyServer ns = new NettyServer();
 		ns.bind();
-		
 	}
-	
 }

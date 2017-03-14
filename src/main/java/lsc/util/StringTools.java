@@ -477,7 +477,7 @@ public class StringTools {
         }
         int size = list.size();
         if (size > limit) {
-            List<T> rs = new ArrayList<>(limit);
+            List<T> rs = new ArrayList<T>(limit);
             int c = 1;
             for (T t : list) {
                 rs.add(t);
