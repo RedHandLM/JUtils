@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.commons.codec.Charsets;
 import org.apache.commons.lang3.StringUtils;
 
+import com.google.common.base.Charsets;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
