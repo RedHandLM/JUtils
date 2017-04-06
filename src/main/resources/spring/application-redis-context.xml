@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" lazy-init="false"
+        p:hostName="${redis.host}"
+        p:port="${redis.port}"
+        p:database="${redis.database}"
+        p:timeout="${redis.timeout}"
+        p:use-pool="${redis.use.pool}"
+        p:poolConfig-ref="redisPoolConfig"/>
+        
+    <bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" lazy-init="false"
+    	p:maxActive="${redis.maxActive}"
+    	p:maxIdle="${redis.maxIdle}"
+    	p:minIdle="${redis.minIdle}"
+    	p:maxWait="${redis.maxWait}"
+    	p:testOnBorrow="${redis.testOnBorrow}"
+    	p:testOnReturn="${redis.testOnReturn}"
+    	p:testWhileIdle="${redis.testWhileIdle}"
+    	p:whenExhaustedAction="${redis.whenExhaustedAction}"
+    	p:timeBetweenEvictionRunsMillis="${redis.timeBetweenEvictionRunsMillis}"
+    	p:numTestsPerEvictionRun="${redis.numTestsPerEvictionRun}"
+    	p:softMinEvictableIdleTimeMillis="${redis.softMinEvictableIdleTimeMillis}"
+    	p:minEvictableIdleTimeMillis="${redis.minEvictableIdleTimeMillis}" />
+  
+	<!-- redis template definition -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+	  p:connection-factory-ref="jedisConnectionFactory" 
+	  lazy-init="false">
+	  <property name="keySerializer" ref="stringRedisSerializer"></property>
+	</bean>
+	
+	<bean id="wxJedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" lazy-init="false"
+        p:hostName="${wx.redis.host}"
+        p:port="${redis.port}"
+        p:database="${redis.database}"
+        p:timeout="${redis.timeout}"
+        p:use-pool="${redis.use.pool}"
+        p:poolConfig-ref="redisPoolConfig"/>
+        
+      <bean id="wxRedisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+	  p:connection-factory-ref="wxJedisConnectionFactory" 
+	  lazy-init="false">
+	  <property name="keySerializer" ref="stringRedisSerializer"></property>
+	</bean>
+	
+	<!-- redis template definition -->
+	<bean id="stringRedisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+	  p:connection-factory-ref="jedisConnectionFactory" 
+	  lazy-init="false">
+	  <property name="keySerializer" ref="stringRedisSerializer"></property>
+	  <property name="valueSerializer" ref="stringRedisSerializer"></property>
+	</bean>
+	
+	<!-- redis template definition -->
+	<bean id="hashRdTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+	  p:connection-factory-ref="jedisConnectionFactory" 
+	  lazy-init="false">
+	  <property name="keySerializer" ref="stringRedisSerializer"></property>
+	  <property name="hashKeySerializer" ref="stringRedisSerializer"></property>
+	  <property name="hashValueSerializer" ref="stringRedisSerializer"></property>
+	</bean>
+	
+	<bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"></bean> 
+
+</beans>

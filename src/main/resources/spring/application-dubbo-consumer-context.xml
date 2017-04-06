@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 不使用强依赖  -->
+	<dubbo:consumer check="${dubbo.consumer.check}"/>
+
+	<dubbo:application name="${dubbo.application.name}" />  
+	
+	<dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" /> 
+	
+	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" dispatcher="all" threadpool="cached"  />  
+	
+	<!-- 以下是服务提供者 -->
+	
+	<dubbo:service interface="com.hunteron.api.activity.remote.IUserActivityInviteCodeRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userActivityInviteCodeRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.advertisement.remote.v2.IAdvertisementRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="advertisementRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.alipay.remote.IAlipayBusinessRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="alipayBusinessRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.attachemnt.remote.v2.IAttachmentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="attachmentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.audit.remote.v2.IAuditRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="auditRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.ICheckCrmAcountRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="checkCrmAcountRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.ICandidateLogRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateLogRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.ICandidateRecommandReportRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateRecommandReportRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.ICandidateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.ICandidateRuleRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateRuleRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.ICandidateStatisticsRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateStatisticsRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.ICandidateUndeterminedReasonRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateUndeterminedReasonRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.IHrCandidateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hrCandidateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.IOperateCandidateRecordRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="operateCandidateRecordRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.IProgressRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="progressRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.IRecommandFailedRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="recommandFailedRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.IRecommendSuitableTalentLogRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="recommendSuitableTalentLogRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.candidate.remote.v2.IStandardCandidateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="standardCandidateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.capability.remote.v2.IHhCapabilityRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hhCapabilityRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.collect.remote.v2.ICollectRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="collectRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.collect.remote.v2.IHrHdConnectionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hrHdConnectionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.common.remote.v2.IAdvertRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="advertRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.common.remote.v2.IDictionaryRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="dictionaryRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.common.remote.v2.IMetadataRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="metadataRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.common.remote.v2.IPushJobRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="pushJobRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.ICompanyActiveApplyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="companyActiveApplyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.ICompanyOnboardPayWhiteRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="companyOnboardPayWhiteRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.ICompanyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="companyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.ICompanyStatsRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="companyStatsRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.ICompanyUserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="companyUserRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.ICpyInviteUserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="cpyInviteUserRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.IHdBetaTestCompanyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hdBetaTestCompanyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.company.remote.v2.IHighQualityCompanyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="highQualityCompanyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.contract.remote.v2.IContractRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="contractRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.coupon.remote.v2.ICouponRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="couponRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.crawler.remote.v2.IPreventCrawlerRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="preventCrawlerRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.ICorrelationEnterpriseRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="correlationEnterpriseRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IEnterpriseCollectionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="enterpriseCollectionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IEnterpriseInvestigateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="enterpriseInvestigateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IEnterpriseRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="enterpriseRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IEnterpriseTagRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="enterpriseTagRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IEnterpriseUserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="enterpriseUserRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IGroupEnterpriseRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="groupEnterpriseRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IOutsideEnterpriseInvestigateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="outsideEnterpriseInvestigateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IOutsideEnterpriseRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="outsideEnterpriseRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.enterprise.remote.v2.IYellowPageRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="yellowPageRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.exchange.remote.v2.IExchangeMobilePhoneRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="exchangeMobilePhoneRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.feedback.remote.v2.IFeedbackRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="feedbackRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.greet.remote.v2.ICustomGreetRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="customGreetRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.group.remote.v2.IGroupOperationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="groupOperationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.group.remote.v2.IGroupRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="groupRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.group.remote.v2.IGroupUserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="groupUserRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.group.remote.v2.IOperationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="operationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.group.remote.v2.IUserOperationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userOperationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.history.remote.v2.IHistoryLogRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="historyLogRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.hot.remote.v2.IHotRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hotRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.interview.remote.v2.IInterviewRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="interviewRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.invoice.remote.IInvoiceRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="invoiceRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.mobile.remote.v2.IMobileUserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="mobileUserRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.mq.remote.v2.ILoginMqRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="loginMqRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.params.remote.v2.IParamsValueConfigRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="paramsValueConfigRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.payment.remote.v2.IDataTransferRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="dataTransferRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.payment.remote.v2.IHunterPaymentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hunterPaymentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.payment.remote.v2.IPaymentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="paymentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.placement.remote.v2.IPlacementRecordRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="placementRecordRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.placement.remote.v2.IPlacementRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="placementRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.placement.remote.v2.IPlacementStatisticsRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="placementStatisticsRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionCommonRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionCommonRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IGrabOrderRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="grabOrderRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IHeadhunterEvaluatePositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="headhunterEvaluatePositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IHeadhunterPositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="headhunterPositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IImportantPositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="importantPositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IOutsidePositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="outsidePositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPortraitStatisticsHrRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="portraitStatisticsHrRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPortraitStatisticsPositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="portraitStatisticsPositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionActiveListRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionActiveListRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionActivityRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionActivityRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionAreaRelationshipRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionAreaRelationshipRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionAreaRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionAreaRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionAutoApplyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionAutoApplyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionCollectionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionCollectionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionConditionsRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionConditionsRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionContactRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionContactRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionShareCodeRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionConvertCodeRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionCooperationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionCooperationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionInvestigateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionInvestigateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionPloyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionPloyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionPreemptionHhBlacklistRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionPreemptionHhBlacklistRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionPreemptionHhRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionPreemptionHhRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionPreemptionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionPreemptionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionQuestionAnswerRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionQuestionAnswerRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionRewardRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionRewardRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionRuleRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionRuleRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionSurveyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionSurveyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionUrgencyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionUrgencyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionValueConfRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionValueConfRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IPositionValueRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionValueRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.position.remote.v2.IRecruitSpecialRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="recruitSpecialRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.prepay.remote.v2.IPrePayConfRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="prePayConfRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.register.remote.v2.IRegisterWaitHandleRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="registerWaitHandleRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.report.remote.v2.IHunterReportRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hunterReportRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.retransmit.remote.IInterviewerOperationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="interviewerOperationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.retransmit.remote.IRetransmitCandidateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="retransmitCandidateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.retransmit.remote.IRetransmitPositionCandidateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="retransmitPositionCandidateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.retransmit.remote.IRetransmitPositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="retransmitPositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.search.remote.v2.IHeadHunterSearchRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="headHunterSearchRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.search.remote.v2.IPositionSearchRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="positionSearchRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.search.remote.v2.ISearchRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="searchRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.search.remote.v2.ITalentSearchRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentSearchRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.standard.remote.v2.ICandidateStandardRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="candidateStandardRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.tag.remote.v2.ITagRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="tagRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.IPluginResumetRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="pluginResumetRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.IStandardTalentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="standardTalentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentDraftRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentDraftRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentEduExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentEduExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentProjectExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentProjectExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentRecommandReportRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentRecommandReportRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentResumeRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentResumeRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentStandardRecordRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentStandardRecordRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.talent.remote.v2.ITalentWorkExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentWorkExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.todo.remote.IUserToDoRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userToDoRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.unread.remote.v2.IUnreadCandidateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="unreadCandidateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.unread.remote.v2.IUnreadPaymentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="unreadPaymentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.unread.remote.v2.IUnreadPlacementRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="unreadPlacementRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.unread.remote.v2.IUnreadPositionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="unreadPositionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.unread.remote.v2.IUnreadRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="unreadRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.unread.remote.v2.IUnreadTalentRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="unreadTalentRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IComplaintOptionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="complaintOptionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IComplaintRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="complaintRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IEvaluationRecordRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="evaluationRecordRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IFundAccountRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="fundAccountRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IHeadhunterRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="headhunterRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IHhRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hhRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IHrBlacklistRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hrBlacklistRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IHrCooperationHhRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hrCooperationHhRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IHrHeadhunterCompanyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hrHeadhunterCompanyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IHrRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="hrRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.ILoginSourceRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="loginSourceRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IMobileCaptchaRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="mobileCaptchaRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.INoticeRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="noticeRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IPassportRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="passportRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IPrivacyRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="privacyRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IProfileRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="profileRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IRegistrationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="registrationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IRejectReasonOptionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="rejectReasonOptionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IServiceRelationRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="serviceRelationRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.ISubscriptionRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="subscriptionRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IUserAccountRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userAccountRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IUserIdentityRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userIdentityRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IUserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IUserWxRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userWxRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.util.server.remote.v2.IUtilRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="utilRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.wechat.remote.IWeChatBridgeRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="weChatBridgeRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.wechat.remote.IWeChatBusinessRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="weChatBusinessRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.message.remote.v2.IMessageSendRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="messageSendRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.fileParser.file.remote.v2.IFileRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="fileRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.fileParser.talent.remote.v2.ITalentParserRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="talentParserRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.auth.remote.IPasswordRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="passwordRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterRecommendRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterRecommendRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.evaluate.remote.IEvaluateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="evaluateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.chat.remote.IImRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="IMRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.user.remote.IJobhunterSendRecordRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterSendRecordRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.evaluate.remote.IUserIntegralRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userIntegralRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.evaluate.remote.ICompanyLevelRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="companyLevelRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.user.remote.IJobhunterProfileRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterProfileRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterWorkExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterWorkExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterEduExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterEduExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterProjectExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterProjectExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterAttachementRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterAttachementRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.statistics.remote.v2.IPortraitHeadhunterRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="portraitHeadhunterRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.message.remote.v2.ISmsRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="smsRemoteService" timeout="5000" />
+	
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterOperateRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterOperateRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterInterviewRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterInterviewRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.jobhunter.remote.IJobhunterPlacementRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="jobhunterPlacementRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.ntalent.remote.IResumeWorkExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="resumeWorkExpRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.ntalent.remote.IResumeEduExpRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="resumeEduExpRemoteService" timeout="5000" />
+	
+
+	<dubbo:service interface="com.hunteron.api.incubator.remote.IIncubatorGroupRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="incubatorGroupRemoteService" timeout="5000" />
+	<dubbo:service interface="com.hunteron.api.mq.remote.v2.IUserMqRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="userMqRemoteService" timeout="5000" />
+
+	<dubbo:service interface="com.hunteron.api.user.remote.v2.IEventClockRemoteService" version="1.0.0" group="${dubbo.group}" loadbalance="random" ref="eventClockRemoteService" timeout="5000" mock="true"/>
+
+	<!-- 以下是消费者 -->
+	
+	<dubbo:reference id="tradeRemoteService" interface="com.hunteron.api.trade.remote.ITradeRemoteService" /> 
+	
+	<dubbo:reference id="recommendServiceClient" interface="com.hunteron.recommend.service.RecommendServiceClient" mock="true"/> 
+	
+	<dubbo:reference id="indexRemoteService" interface="com.hos.search.core.api.IndexServiceClient" version="1.0.0" group="index" loadbalance="random" mock="true"/> 
+	
+	<dubbo:reference id="searchServiceClient" interface="com.hos.search.core.api.SearchServiceClient" version="1.0.0" group="search" loadbalance="random" mock="true"/> 
+	
+	<dubbo:reference id="hrSearchClient" interface="com.hunteron.hrsearch.api.service.HrSearchClient" version="1.0.0" group="hrSearch" loadbalance="random" mock="true"/> 
+	
+	<dubbo:reference id="parameterService" interface="com.hunteron.api.service.ParameterService" version="1.0.0" group="search_manager" loadbalance="random" mock="true"/>
+	
+	<dubbo:reference id="hunterPositionServiceClient" interface="com.hunteron.search.service.HunterPositionServiceClient" version="1.0.0" group="hunterPosition" loadbalance="random" mock="true"/>
+	
+	<dubbo:reference id="hunterCompanyPositionServiceClient" interface="com.hunteron.search.service.HunterCompanyPositionServiceClient" version="1.0.0" group="hunterCompanyPosition" loadbalance="random"  mock="true"/>
+	
+	<dubbo:reference id="jobhunterTrainExpRemoteService" interface="com.hunteron.api.jobhunter.remote.IJobhunterTrainExpRemoteService"/>
+	
+	<dubbo:reference id="jobhunterCertificationRemoteService" interface="com.hunteron.api.jobhunter.remote.IJobhunterCertificationRemoteService"/>
+	
+	<dubbo:reference id="jobhunterLanguageAbilityRemoteService" interface="com.hunteron.api.jobhunter.remote.IJobhunterLanguageAbilityRemoteService"/>
+	
+	<dubbo:reference id="shortUrlRemoteService" interface="com.hunteron.boot.remote.publicity.IShortUrlRemoteService" version="v1.0" group="baseBoot" loadbalance="random" mock="true"/>
+	
+</beans>

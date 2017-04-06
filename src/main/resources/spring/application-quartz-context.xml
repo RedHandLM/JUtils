@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		" default-lazy-init="false">
+	
+	<bean id="abstractJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean" abstract="true">
+		<property name="concurrent" value="false" />
+		<property name="targetMethod" value="handle" />
+	</bean>
+	<bean id="abstractSimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean" abstract="true">
+		<property name="startDelay" value="${default.start.delay}" />
+	</bean>
+	<bean id="abstractCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" abstract="true">
+	</bean>
+	
+	<bean id="checkCandidateNearGuaranteeTimeTrigger" parent="abstractCronTrigger">
+		<property name="jobDetail">
+			<bean parent="abstractJobDetail">
+				<property name="targetObject" ref="checkCandidateNearGuaranteeTimeHandler" />
+			</bean>
+		</property>
+		<property name="cronExpression" value="${cdd.near.guarantee.time.cron}" />
+	</bean>
+	
+	<bean id="hhStatisticsComputTrigger" parent="abstractCronTrigger">
+		<property name="jobDetail">
+			<bean parent="abstractJobDetail">
+				<property name="targetObject" ref="hhStatisticsComputHandler" />
+			</bean>
+		</property>
+		<property name="cronExpression" value="${hh.statistics.comput.cron}" />
+	</bean>
+	
+	<bean id="hhCompanyStatisticsComputTrigger" parent="abstractCronTrigger">
+		<property name="jobDetail">
+			<bean parent="abstractJobDetail">
+				<property name="targetObject" ref="hhCompanyStatisticsComputHandler" />
+			</bean>
+		</property>
+		<property name="cronExpression" value="${hh.company.statistics.comput.cron}" />
+	</bean>
+	
+	<bean id="undeterminedCandidateAlertTrigger" parent="abstractCronTrigger">
+		<property name="jobDetail">
+			<bean parent="abstractJobDetail">
+				<property name="targetObject" ref="undeterminedCandidateAlertHandler" />
+			</bean>
+		</property>
+		<property name="cronExpression" value="${undetermined.candidate.alert.cron}" />
+	</bean>
+	
+	<bean id="hdHunterStatisticsComputTrigger" parent="abstractCronTrigger">
+		<property name="jobDetail">
+			<bean parent="abstractJobDetail">
+				<property name="targetObject" ref="hdHunterStatisticsComputHandler" />
+			</bean>
+		</property>
+		<property name="cronExpression" value="${hd.Hunter.Statistics.cron}" />
+	</bean>
+	
+	<bean id="headhunterLeaveCompanyTrigger" parent="abstractCronTrigger">
+		<property name="jobDetail">
+			<bean parent="abstractJobDetail">
+				<property name="targetObject" ref="headhunterLeaveCompanyHandler" />
+			</bean>
+		</property>
+		<property name="cronExpression" value="${hh.leave.company.cron}" />
+	</bean>
+	
+	<bean id="scheduler"  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="hhStatisticsComputTrigger"/>
+				<ref bean="hhCompanyStatisticsComputTrigger"/>
+				<ref bean="checkCandidateNearGuaranteeTimeTrigger"/>
+				<ref bean="undeterminedCandidateAlertTrigger"/>
+				<ref bean="hdHunterStatisticsComputTrigger"/>
+				<ref bean="headhunterLeaveCompanyTrigger"/>
+			</list>
+		</property>
+	</bean>
+</beans>
+

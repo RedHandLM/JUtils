@@ -1,6 +1,8 @@
 package lsc.util;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import org.apache.poi.hssf.util.HSSFColor;
@@ -60,8 +62,21 @@ public class ExcelUtil {
                 FileOutputStream outputStream = new FileOutputStream(excelPath);
                 workbook.write(outputStream);
                 outputStream.flush();
+                FileInputStream fi=new FileInputStream(new File(excelPath));
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();  
+                byte[] b = new byte[1024];  
+                int n;  
+                while ((n = fi.read(b)) != -1)  
+                {  
+                    bos.write(b, 0, n);  
+                }  
+                fi.close();  
+                bos.close();  
+                byte [] b2= bos.toByteArray();  
+//                return b2;
                 outputStream.close();
                 isCreateSuccess = true;
+                
             } catch (Exception e) {
                 System.out.println("It cause Error on WRITTING excel workbook: ");
                 e.printStackTrace();

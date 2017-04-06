@@ -99,6 +99,7 @@ public class ServiceCenter implements Server {
             ObjectInputStream input = null;
             ObjectOutputStream output = null;
             try {
+                //使用inputStream读取客户端请求
                 input = new ObjectInputStream(clent.getInputStream());
                 String interfaceName = input.readUTF();
                 String methodName = input.readUTF();
@@ -115,22 +116,16 @@ public class ServiceCenter implements Server {
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (NoSuchMethodException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (SecurityException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (IllegalArgumentException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (InstantiationException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 

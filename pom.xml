@@ -5,7 +5,7 @@
 	<groupId>com.hunteron</groupId>
 	<artifactId>su</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>su</name>
 	<url>http://maven.apache.org</url>
@@ -190,5 +190,16 @@
 			<artifactId>hessian</artifactId>
 			<version>4.0.37</version>
 		</dependency>
+		<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>  
+	        <groupId>redis.clients</groupId>  
+	        <artifactId>jedis</artifactId>  
+        	<version>2.1.0</version>  
+   		 </dependency>  
 	</dependencies>
 </project>

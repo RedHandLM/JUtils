@@ -16,8 +16,8 @@ import soa.tcp.impl.ServiceCenter;
  */
 public class TestRPC {
     public static void main(String[] args) {
+        //启动server 绑定端口和注册服务
         new Thread(new Runnable() {
-
             @Override
             public void run() {
                 Server serviceServer = new ServiceCenter(8088);
@@ -25,6 +25,7 @@ public class TestRPC {
                 serviceServer.start();
             }
         }).start();
+        //使用动态代理获得远程接口实现类
         SayHelloService service = RPCClient.getRemoteProxyObj(SayHelloService.class, new InetSocketAddress("localhost", 8088));
         System.out.println(service.sayHello("Hello"));
     }
