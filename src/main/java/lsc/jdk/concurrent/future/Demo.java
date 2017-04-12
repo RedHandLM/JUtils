@@ -4,12 +4,11 @@ import java.util.Date;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import com.hunteron.scheduler.api.pool.ThreadPoolFactory;
-
 public class Demo {
-    ThreadPoolExecutor executor = ThreadPoolFactory.getInstance()
+    static ThreadPoolExecutor executor = ThreadPoolFactory.getInstance()
             .getThreadPool();
     
+    /*
     public static void main(String[] args) {
         Future<?> future = executor.submit(new Runnable() {
             public void run() {
@@ -66,4 +65,5 @@ public class Demo {
             }
         });
     }
+    */
 }
