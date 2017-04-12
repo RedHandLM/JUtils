@@ -41,6 +41,13 @@ public abstract class AbstractBatchOperation<T> {
      */
     protected abstract void dealBatchData(List<T> data);
 
+    /**
+     * 功能描述: 处理任务<br>
+     *
+     * @param exec
+     * @param data 可以指定一批任务
+     * @return
+     */
     protected long execute(Executor exec, List<T> data) {
         long taskBeginTime = System.currentTimeMillis();
 

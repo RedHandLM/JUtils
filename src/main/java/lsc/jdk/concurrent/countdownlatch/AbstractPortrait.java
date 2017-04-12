@@ -72,7 +72,7 @@ public abstract class AbstractPortrait<T> {
         }
 
         long spendTime = System.currentTimeMillis() - taskBeginTime;
-        LOG.debug("Update position portrait success, spend time :" + spendTime + "ms");
+        LOG.debug("spend time :" + spendTime + "ms");
 
         return spendTime;
     }
