@@ -156,11 +156,20 @@
 			<artifactId>curator-framework</artifactId>
 			<version>2.7.1</version>
 		</dependency>
+		<!-- 典型场景使用参考 -->
 		<dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-recipes</artifactId>
 			<version>2.7.1</version>
 		</dependency>
+		<!-- 允许开发人员非常方便的启动zookeeper服务进行单元测试 -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-test</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+		
+		
 		<!-- POI -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
