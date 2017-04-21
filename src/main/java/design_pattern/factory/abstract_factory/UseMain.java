@@ -17,8 +17,8 @@ import design_pattern.factory.abstract_factory.abstract_factory.impl.CarB;
 public class UseMain {
     
     public static void main(String[] args) {
-        Abstract_CarFactory factoryA = new CarA();
-        factoryA.install_air_conditioner().work();
+        Abstract_CarFactory factoryA = new CarA();//抽象工厂返回具体工厂
+        factoryA.install_air_conditioner().work();//具体工厂方法返回具体产品实现
         factoryA.install_air_engine().work();
         Abstract_CarFactory factoryB = new CarB();
         factoryB.install_air_conditioner().work();

@@ -36,7 +36,7 @@ public class GgFrameworkClient {
 	    }
 	}
 	
-	public static void addListenerFromCache() {
+	public static void  addListenerFromCache() {
 	    if(LISTENER_NODES.size() > 0) {
             log.debug("[{}] add listener from node cache", GgFrameworkUtil.FRAMEWORK_PREFIX);
 	        for(ListenerNode node : LISTENER_NODES) {
